@@ -25,12 +25,19 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     public BoxCollider2D groundCheck;
     public LayerMask groundMask;
+    public LayerMask enemyMask;
+    public GameObject sword;
+    public Transform attackPoint;
+    public float attackRange;
+    public int attackDamage = 40;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
+        sword.gameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -39,6 +46,7 @@ public class PlayerController : MonoBehaviour
         GetInputs();
         HandleRun();
         HandleJump();
+        HandleMelee();
         
         //Vector2 direction = new Vector2(xInput, yInput);
         //rb.velocity = direction * runSpeed;
@@ -71,6 +79,29 @@ public class PlayerController : MonoBehaviour
             Debug.Log("JUMP");
         }
     }
+    private void HandleMelee()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            sword.gameObject.SetActive(true);
+
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyMask);
+
+            foreach(Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyController>().TakeDamage(attackDamage);
+            }
+            Invoke("SetSwordFalse", 0.5f);
+            
+        }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
     void Friction()
     {
         if (grounded && Input.GetAxis("Horizontal") == 0 && rb.velocity.y <=0)
@@ -93,5 +124,10 @@ public class PlayerController : MonoBehaviour
             grounded = false;
 
         }
+    }
+
+    private void SetSwordFalse()
+    {
+        sword.gameObject.SetActive(false);
     }
 }
