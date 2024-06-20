@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,11 +14,15 @@ public class PlayerController : MonoBehaviour
     Vector2 jump;
     public float runSpeed;
     public float jumpSpeed;
+    public float glideSpeed;
+    public float glideFall;
+    private float initialGravity;
 
     [Range(0f, 1f)]
     public float groundDecay;
 
     public bool grounded;
+    public bool gliding;
     float xInput;
     float yInput;
 
@@ -37,16 +43,21 @@ public class PlayerController : MonoBehaviour
         gameManager = GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         sword.gameObject.SetActive(false);
+        initialGravity = rb.gravityScale;
+        gliding = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         GetInputs();
         HandleRun();
         HandleJump();
         HandleMelee();
+        HandleGlide();
         
         //Vector2 direction = new Vector2(xInput, yInput);
         //rb.velocity = direction * runSpeed;
@@ -55,6 +66,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Friction();
+
+        if (grounded)
+        {
+            rb.gravityScale = initialGravity;
+        }
     }
 
     void GetInputs()
@@ -78,6 +94,25 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             Debug.Log("JUMP");
         }
+    }
+    void HandleGlide()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!grounded && !gliding)
+            {
+                gliding = true;
+                Gravity();
+                rb.velocity = new Vector2(xInput * glideSpeed, glideFall);
+            }
+            else if (!grounded && gliding)
+            {
+                gliding = false;
+                Gravity();
+            }
+        }
+
+        
     }
     private void HandleMelee()
     {
@@ -109,11 +144,24 @@ public class PlayerController : MonoBehaviour
             rb.velocity *= groundDecay;
         }
     }
+
+    void Gravity()
+    {
+        if (!gliding)
+        {
+            rb.gravityScale = initialGravity;
+        }
+        else if (gliding)
+        {
+            rb.gravityScale = 0f;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Ground")
         {
             grounded = true;
+            gliding = false;
 
         }
     }
@@ -122,7 +170,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             grounded = false;
-
         }
     }
 
