@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int currentHealth;
 
     public static GameManager instance;
+    public int ghostKilled;
     private void Awake()
 
     {
@@ -29,10 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHealth <= 0)
-        {
-            HandleDeath();
-        }
+        
     }
     public void ChangeLevel()
     {
@@ -61,5 +59,6 @@ public class GameManager : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
         currentHealth = maxHealth;
+        ghostKilled = 0;
     }
 }

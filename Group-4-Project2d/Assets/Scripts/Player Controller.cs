@@ -33,23 +33,26 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     public BoxCollider2D groundCheck;
     public LayerMask groundMask;
-    public LayerMask enemyMask;
+    public LayerMask wolfMask;
+    public LayerMask ghostMask;
     public GameObject sword;
     public Transform attackPoint;
     public float attackRange;
-    public int attackDamage = 40;
+    public int attackDamage = 1;
 
     public int playerHealth;
+
+    public Animator Animator;
    
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         sword.gameObject.SetActive(false);
         initialGravity = rb.gravityScale;
         gliding = false;
+        playerHealth = 3;
 
     }
 
@@ -64,9 +67,16 @@ public class PlayerController : MonoBehaviour
         HandleMelee();
         HandleGlide();
         //HandleDeath();
+
         
-        //Vector2 direction = new Vector2(xInput, yInput);
-        //rb.velocity = direction * runSpeed;
+        
+        playerHealth = gameManager.currentHealth;
+        Animator.SetInteger("Health", playerHealth);
+        
+        if (playerHealth < 1)
+        {
+            Invoke("HandleDeath", 1.25f);
+        }
     }
 
     private void FixedUpdate()
@@ -86,11 +96,17 @@ public class PlayerController : MonoBehaviour
     }
     void HandleRun()
     {
+        
         if (Mathf.Abs(xInput) > 0)
         {
             rb.velocity = new Vector2(xInput * runSpeed, rb.velocity.y);
             float direction = Mathf.Sign(xInput);
             transform.localScale = new Vector3(direction, 1, 1);
+            Animator.SetFloat("Speed", Mathf.Abs(direction));
+        }
+        else
+        {
+            Animator.SetFloat("Speed", 0);
         }
     }
     void HandleJump()
@@ -108,12 +124,14 @@ public class PlayerController : MonoBehaviour
             if (!grounded && !gliding)
             {
                 gliding = true;
+                Animator.SetBool("Gliding", true);
                 Gravity();
                 rb.velocity = new Vector2(xInput * glideSpeed, glideFall);
             }
             else if (!grounded && gliding)
             {
                 gliding = false;
+                Animator.SetBool("Gliding", false);
                 Gravity();
             }
         }
@@ -124,16 +142,26 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            sword.gameObject.SetActive(true);
-
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyMask);
-
-            foreach(Collider2D enemy in hitEnemies)
+            if (grounded)
             {
-                enemy.GetComponent<WolfController>().TakeDamage(attackDamage);
+                sword.gameObject.SetActive(true);
+                Animator.SetBool("Is Attacking", true);
+
+                Collider2D[] hitWolf = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, wolfMask);
+
+                foreach (Collider2D enemy in hitWolf)
+                {
+                    enemy.GetComponent<WolfController>().TakeDamage(attackDamage);
+                }
+
+                Collider2D[] hitGhost = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, ghostMask);
+
+                foreach (Collider2D enemy in hitGhost)
+                {
+                    enemy.GetComponent<GhostController>().TakeDamage(attackDamage);
+                }
+                Invoke("SetSwordFalse", 0.5f);
             }
-            Invoke("SetSwordFalse", 0.5f);
-            
         }
     }
     private void OnDrawGizmosSelected()
@@ -168,6 +196,7 @@ public class PlayerController : MonoBehaviour
         {
             grounded = true;
             gliding = false;
+            Animator.SetBool("Grounded", true);
 
         }
         if (other.gameObject.tag == "Deathplane")
@@ -186,17 +215,21 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             grounded = false;
+            Animator.SetBool("Grounded", false);
         }
     }
 
     private void SetSwordFalse()
     {
         sword.gameObject.SetActive(false);
+        Animator.SetBool("Is Attacking", false );
     }
     private void HandleDeath()
     {
         Debug.Log("Death!!!");
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
+        gameManager.currentHealth = 3;
+        gameManager.ghostKilled = 0;
     }
 }

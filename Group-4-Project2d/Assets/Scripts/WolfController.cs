@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WolfController : MonoBehaviour
 {
-    private int maxHealth = 100;
+    private int maxHealth = 3;
     private int currentHealth;
     public GameObject ghostPrefab;
     private Vector2 pos;
@@ -31,6 +31,7 @@ public class WolfController : MonoBehaviour
         biteAttack.gameObject.SetActive(false);
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+        ghostPrefab.gameObject.SetActive(false);
 
     }
 
@@ -69,7 +70,7 @@ public class WolfController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            GameObject ghost = Instantiate(ghostPrefab, new Vector2 (transform.position.x, transform.position.y + 1), Quaternion.identity);
+            ghostPrefab.gameObject.SetActive(true);
             Destroy(gameObject);
         }
     }

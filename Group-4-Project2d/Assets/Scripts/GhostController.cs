@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class GhostController : MonoBehaviour
 {
-    private float maxHealth = 100;
-    private float currentHealth;
+    public float maxHealth = 3;
+    public float currentHealth;
 
     public GameObject player;
     public float speed;
 
     private float distance;
+
+    public GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,5 +30,16 @@ public class GhostController : MonoBehaviour
     private void FixedUpdate()
     {
         
+    }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        Debug.Log("Enemy has " + currentHealth + " health.");
+
+        if (currentHealth <= 0)
+        {
+            gm.ghostKilled++;
+            Destroy(gameObject);
+        }
     }
 }
