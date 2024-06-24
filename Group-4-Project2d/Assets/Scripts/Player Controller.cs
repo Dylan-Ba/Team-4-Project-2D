@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float glideFall;
     private float initialGravity;
 
+    
     [Range(0f, 1f)]
     public float groundDecay;
 
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
     float yInput;
 
     //Game Objects
-    public GameManager gameManager;
+    public GameManager gm;
     Rigidbody2D rb;
     public BoxCollider2D groundCheck;
     public LayerMask groundMask;
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
         
         
-        playerHealth = gameManager.currentHealth;
+        playerHealth = gm.currentHealth;
         Animator.SetInteger("Health", playerHealth);
         
         if (playerHealth < 1)
@@ -96,18 +97,35 @@ public class PlayerController : MonoBehaviour
     }
     void HandleRun()
     {
-        
-        if (Mathf.Abs(xInput) > 0)
+        if (gm.kbCounter <= 0)
         {
-            rb.velocity = new Vector2(xInput * runSpeed, rb.velocity.y);
-            float direction = Mathf.Sign(xInput);
-            transform.localScale = new Vector3(direction, 1, 1);
-            Animator.SetFloat("Speed", Mathf.Abs(direction));
+            if (Mathf.Abs(xInput) > 0)
+            {
+
+                rb.velocity = new Vector2(xInput * runSpeed, rb.velocity.y);
+                float direction = Mathf.Sign(xInput);
+                transform.localScale = new Vector3(direction, 1, 1);
+                Animator.SetFloat("Speed", Mathf.Abs(direction));
+
+            }
+            else
+            {
+                Animator.SetFloat("Speed", 0);
+            }
         }
         else
         {
-            Animator.SetFloat("Speed", 0);
+            if (gm.knockFromRight == true)
+            {
+                rb.velocity= new Vector2(-gm.kbForce, 5);
+            }
+            if (gm.knockFromRight == false)
+            {
+                rb.velocity=new Vector2(gm.kbForce, 5);
+            }
+            gm.kbCounter -= Time.deltaTime;
         }
+        
     }
     void HandleJump()
     {
@@ -206,7 +224,7 @@ public class PlayerController : MonoBehaviour
 
        if (other.gameObject.tag == "Attack")
         {
-            gameManager.currentHealth--;
+            gm.currentHealth--;
 
         }
     }
@@ -229,7 +247,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Death!!!");
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
-        gameManager.currentHealth = 3;
-        gameManager.ghostKilled = 0;
+        gm.currentHealth = 3;
+        gm.ghostKilled = 0;
     }
 }

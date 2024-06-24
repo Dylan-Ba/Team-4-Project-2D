@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
 
+    public float kbForce;
+    public float kbCounter;
+    public float kbTotalTime;
+    public bool knockFromRight;
+
     public static GameManager instance;
     public int ghostKilled;
     private void Awake()

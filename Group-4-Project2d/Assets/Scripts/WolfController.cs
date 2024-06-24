@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WolfController : MonoBehaviour
 {
     private int maxHealth = 3;
+    [SerializeField]
     private int currentHealth;
     public GameObject ghostPrefab;
     private Vector2 pos;
@@ -39,6 +41,8 @@ public class WolfController : MonoBehaviour
     {
         HandleMovement();
         HandleBite();
+
+        ghostPrefab.transform.position = new Vector2(transform.position.x, transform.position.y +1);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -59,6 +63,15 @@ public class WolfController : MonoBehaviour
         }
         if (other.gameObject == player)
         {
+            gm.kbCounter = gm.kbTotalTime;
+            if (other.transform.position.x <= transform.position.x)
+            {
+                gm.knockFromRight = true;
+            }
+            if (other.transform.position.x >= transform.position.x)
+            {
+                gm.knockFromRight = false;
+            }
             gm.currentHealth--;
         }
     }
@@ -77,24 +90,42 @@ public class WolfController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (patrolDestination == 0)
+        if (gm.kbCounter <= 0)
         {
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoint[0].position, speed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, patrolPoint[0].position) < 0.2f)
+
+            if (patrolDestination == 0)
             {
-                transform.localScale = new Vector3(1, 1, 1);
-                patrolDestination = 1;
+                transform.position = Vector2.MoveTowards(transform.position, patrolPoint[0].position, speed * Time.deltaTime);
+                if (Vector2.Distance(transform.position, patrolPoint[0].position) < 0.2f)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                    patrolDestination = 1;
+                }
+            }
+            if (patrolDestination == 1)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, patrolPoint[1].position, speed * Time.deltaTime);
+                if (Vector2.Distance(transform.position, patrolPoint[1].position) < 0.2f)
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                    patrolDestination = 0;
+                }
             }
         }
-        if (patrolDestination == 1)
+     
+        else
         {
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoint[1].position, speed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, patrolPoint[1].position) < 0.2f)
+            if (gm.knockFromRight == true)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
-                patrolDestination = 0;
+                rb.velocity = new Vector2(gm.kbForce, 5);
             }
+            if (gm.knockFromRight == false)
+            {
+                rb.velocity = new Vector2(-gm.kbForce, 5);
+            }
+            gm.kbCounter -= Time.deltaTime;
         }
+        
     }
 
     private void HandleBite()
