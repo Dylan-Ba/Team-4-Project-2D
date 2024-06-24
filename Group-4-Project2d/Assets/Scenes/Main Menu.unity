@@ -480,6 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30e2c61ac92e6a40b23f915cadd847a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
 --- !u!4 &822204573
 Transform:
   m_ObjectHideFlags: 0
@@ -657,6 +658,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d1eb965b5c38c44b4957c7f607ef20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  kbForce: 0
+  kbCounter: 0
+  kbTotalTime: 0
+  knockFromRight: 0
+  ghostKilled: 0
 --- !u!4 &897873540
 Transform:
   m_ObjectHideFlags: 0

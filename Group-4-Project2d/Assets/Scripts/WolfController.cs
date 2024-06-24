@@ -34,6 +34,7 @@ public class WolfController : MonoBehaviour
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         ghostPrefab.gameObject.SetActive(false);
+        gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
     }
 

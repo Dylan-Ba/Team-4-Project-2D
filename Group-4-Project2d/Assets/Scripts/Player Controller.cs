@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         sword.gameObject.SetActive(false);
         initialGravity = rb.gravityScale;
