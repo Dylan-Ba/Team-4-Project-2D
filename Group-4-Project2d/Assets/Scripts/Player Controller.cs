@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            AudioManager.Instance.Jump(); //Plays the "jump" sound
             Debug.Log("JUMP");
         }
     }
@@ -170,6 +171,7 @@ public class PlayerController : MonoBehaviour
                 foreach (Collider2D enemy in hitWolf)
                 {
                     enemy.GetComponent<WolfController>().TakeDamage(attackDamage);
+                    AudioManager.Instance.Hit();  //Plays the "hit" sound
                 }
 
                 Collider2D[] hitGhost = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, ghostMask);
@@ -177,6 +179,7 @@ public class PlayerController : MonoBehaviour
                 foreach (Collider2D enemy in hitGhost)
                 {
                     enemy.GetComponent<GhostController>().TakeDamage(attackDamage);
+                    AudioManager.Instance.Hit();
                 }
                 Invoke("SetSwordFalse", 0.5f);
             }
