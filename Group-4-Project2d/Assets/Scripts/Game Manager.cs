@@ -6,9 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public int maxHealth;
+    public int currentHealth;
+
     public static GameManager instance;
     private void Awake()
+
     {
+        maxHealth = 3;
+        currentHealth = maxHealth;
         if (instance == null)
         {
             instance = this;
@@ -23,7 +29,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentHealth <= 0)
+        {
+            HandleDeath();
+        }
     }
     public void ChangeLevel()
     {
@@ -45,5 +54,12 @@ public class GameManager : MonoBehaviour
                 nextScene = "Main Menu";
                     break;
         }
+    }
+    private void HandleDeath()
+    {
+        Debug.Log("Death!!!");
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+        currentHealth = maxHealth;
     }
 }

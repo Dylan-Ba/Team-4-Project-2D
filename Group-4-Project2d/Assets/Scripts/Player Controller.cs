@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -37,6 +39,9 @@ public class PlayerController : MonoBehaviour
     public float attackRange;
     public int attackDamage = 40;
 
+    public int playerHealth;
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +63,7 @@ public class PlayerController : MonoBehaviour
         HandleJump();
         HandleMelee();
         HandleGlide();
+        //HandleDeath();
         
         //Vector2 direction = new Vector2(xInput, yInput);
         //rb.velocity = direction * runSpeed;
@@ -124,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
             foreach(Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<EnemyController>().TakeDamage(attackDamage);
+                enemy.GetComponent<WolfController>().TakeDamage(attackDamage);
             }
             Invoke("SetSwordFalse", 0.5f);
             
@@ -164,6 +170,16 @@ public class PlayerController : MonoBehaviour
             gliding = false;
 
         }
+        if (other.gameObject.tag == "Deathplane")
+        {
+            HandleDeath();
+        }
+
+       if (other.gameObject.tag == "Attack")
+        {
+            gameManager.currentHealth--;
+
+        }
     }
     private void OnCollisionExit2D(Collision2D other)
     {
@@ -176,5 +192,11 @@ public class PlayerController : MonoBehaviour
     private void SetSwordFalse()
     {
         sword.gameObject.SetActive(false);
+    }
+    private void HandleDeath()
+    {
+        Debug.Log("Death!!!");
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }

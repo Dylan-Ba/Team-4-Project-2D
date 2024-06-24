@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Ground
   - Melee
+  - Wolf
+  - Ghost
+  - Invisible Wall
+  - Deathplane
+  - Attack
   layers:
   - Default
   - TransparentFX
@@ -16,8 +21,8 @@ TagManager:
   - Player
   - Ground
   - Enemy
-  - 
-  - 
+  - Wolf
+  - Ghost
   - 
   - 
   - 
