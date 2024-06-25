@@ -64,7 +64,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &3055856440908590072
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,11 +147,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56afc8f3b5158a346ba1d974b26e9b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 1
   currentHealth: 0
   player: {fileID: 0}
   speed: 2.5
+  kbForce: 5
+  kbCounter: 0
+  kbTotalTime: 0.25
+  knockFromRight: 0
   gm: {fileID: 0}
+  animator: {fileID: 2644327592244096822}
   rb: {fileID: 0}
 --- !u!95 &2644327592244096822
 Animator:
