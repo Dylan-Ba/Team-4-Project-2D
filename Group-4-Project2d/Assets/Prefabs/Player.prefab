@@ -413,7 +413,7 @@ MonoBehaviour:
   groundDecay: 1
   grounded: 0
   gliding: 0
-  gameManager: {fileID: 0}
+  gm: {fileID: 0}
   groundCheck: {fileID: 0}
   groundMask:
     serializedVersion: 2
