@@ -13,6 +13,7 @@ public class ButtonController : MonoBehaviour
     public Button play;
     public Button help;
     public Button quit;
+    public Button main;
 
 
 
@@ -28,6 +29,13 @@ public class ButtonController : MonoBehaviour
     {
         SceneManager.LoadScene("Help Menu");
     }
+
+
+    public void Main()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
 
     public void QuitGame()
     {
