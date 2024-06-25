@@ -263,9 +263,9 @@ GameObject:
   m_Component:
   - component: {fileID: 33046609}
   - component: {fileID: 33046608}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grassy_Edge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -559,6 +559,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 413291153}
+    - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 634275533}
     - target: {fileID: 894835866772969130, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: m_Name
       value: Ghost
@@ -4321,6 +4329,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &634275533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6572253782269217122, guid: 1369888b11a11614d9f50892e23e4a93, type: 3}
+  m_PrefabInstance: {fileID: 1118958610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &647958541
 GameObject:
   m_ObjectHideFlags: 0
@@ -4459,13 +4472,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2062969535728047962, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 413291153}
+    - target: {fileID: 2062969535728047962, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 634275533}
     - target: {fileID: 4548792382660259307, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.212122
       objectReference: {fileID: 0}
     - target: {fileID: 4548792382660259307, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.047
+      value: 2.09
       objectReference: {fileID: 0}
     - target: {fileID: 4548792382660259307, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4648,9 +4669,9 @@ GameObject:
   m_Component:
   - component: {fileID: 703126417}
   - component: {fileID: 703126416}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grassy_Edge (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6236,13 +6257,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2062969535728047962, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 413291153}
+    - target: {fileID: 2062969535728047962, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 634275533}
     - target: {fileID: 4548792382660259307, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 4548792382660259307, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.65
+      value: 1.718
       objectReference: {fileID: 0}
     - target: {fileID: 4548792382660259307, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7776,6 +7805,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2062969535728047962, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 413291153}
     - target: {fileID: 4548792382660259307, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.09
@@ -10417,6 +10450,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 413291153}
+    - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 634275533}
     - target: {fileID: 894835866772969130, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: m_Name
       value: Ghost (1)
@@ -11018,7 +11059,7 @@ Transform:
   m_GameObject: {fileID: 2086539087}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.94, y: -0.06999999, z: 0}
+  m_LocalPosition: {x: -4.955, y: -0.06999999, z: 0}
   m_LocalScale: {x: 6.4624, y: 6.4624, z: 6.4624}
   m_ConstrainProportionsScale: 0
   m_Children: []
