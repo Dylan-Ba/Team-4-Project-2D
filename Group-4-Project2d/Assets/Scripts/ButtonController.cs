@@ -20,13 +20,13 @@ public class ButtonController : MonoBehaviour
     //Button functionality
     public void PlayGame()
     {
-        SceneManager.LoadScene("LevelOne");
+        SceneManager.LoadScene("Level One");
     }
 
 
     public void Help()
     {
-        SceneManager.LoadScene("HelpMenu");
+        SceneManager.LoadScene("Help Menu");
     }
 
     public void QuitGame()

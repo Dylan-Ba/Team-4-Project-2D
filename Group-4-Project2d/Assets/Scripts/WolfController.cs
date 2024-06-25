@@ -57,7 +57,7 @@ public class WolfController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        
+
         if (other.gameObject == player)
         {
             gm.kbCounter = gm.kbTotalTime;
@@ -70,6 +70,10 @@ public class WolfController : MonoBehaviour
                 gm.knockFromRight = false;
             }
             gm.currentHealth--;
+        }
+        if (other.gameObject.tag == "Deathplane")
+        {
+            TakeDamage(3);
         }
     }
 
