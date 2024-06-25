@@ -263,6 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 33046609}
   - component: {fileID: 33046608}
+  - component: {fileID: 33046610}
   m_Layer: 7
   m_Name: Grassy_Edge
   m_TagString: Ground
@@ -330,13 +331,58 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33046607}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.485, y: -1.512, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.9919, y: 0.9847001, z: 0}
   m_LocalScale: {x: 3.4319823, y: 3.2577019, z: 3.2685547}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 713567798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &33046610
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33046607}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.32}
+  m_EdgeRadius: 0
 --- !u!1 &36183607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,7 +1780,7 @@ GameObject:
   - component: {fileID: 238262642}
   m_Layer: 0
   m_Name: Grass_Block_Bottom (12)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1948,7 +1994,7 @@ GameObject:
   - component: {fileID: 251785412}
   m_Layer: 0
   m_Name: Grass_Block_Bottom (10)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2908,7 +2954,7 @@ GameObject:
   - component: {fileID: 366221341}
   m_Layer: 0
   m_Name: Grass_Block_Top (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3309,10 +3355,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3536,7 +3582,7 @@ GameObject:
   - component: {fileID: 466589769}
   m_Layer: 0
   m_Name: Grass_Block_Bottom (7)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3880,7 +3926,7 @@ GameObject:
   - component: {fileID: 483482360}
   m_Layer: 0
   m_Name: Grass_Block_Bottom (5)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4246,7 +4292,7 @@ GameObject:
   - component: {fileID: 531241640}
   m_Layer: 0
   m_Name: Grass_Block_Bottom (14)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4330,7 +4376,7 @@ GameObject:
   - component: {fileID: 539807756}
   m_Layer: 0
   m_Name: Grass_Block_Top (9)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5011,7 +5057,7 @@ GameObject:
   - component: {fileID: 646294911}
   - component: {fileID: 646294910}
   m_Layer: 7
-  m_Name: Grassy_Top (24)
+  m_Name: Deathplane04
   m_TagString: Deathplane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5547,12 +5593,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703126415}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -3.48, y: -1.512, z: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0.9969001, y: 0.9847001, z: 0}
   m_LocalScale: {x: 3.4319823, y: 3.2577019, z: 3.2685547}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 713567798}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &707153158
 GameObject:
@@ -5808,6 +5854,8 @@ Transform:
   - {fileID: 2139974617}
   - {fileID: 1992937678}
   - {fileID: 539807757}
+  - {fileID: 33046609}
+  - {fileID: 703126417}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &716216581
@@ -6108,7 +6156,7 @@ GameObject:
   - component: {fileID: 745001490}
   - component: {fileID: 745001489}
   m_Layer: 7
-  m_Name: Grassy_Top (22)
+  m_Name: Deathplane02
   m_TagString: Deathplane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6368,7 +6416,7 @@ GameObject:
   - component: {fileID: 757327323}
   m_Layer: 0
   m_Name: Grass_Block_Bottom (9)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6712,7 +6760,7 @@ GameObject:
   - component: {fileID: 778991574}
   m_Layer: 0
   m_Name: Grass_Block_Bottom (6)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8277,7 +8325,7 @@ GameObject:
   - component: {fileID: 976327283}
   - component: {fileID: 976327282}
   m_Layer: 7
-  m_Name: Grassy_Top (21)
+  m_Name: Deathplane01
   m_TagString: Deathplane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9146,7 +9194,7 @@ GameObject:
   - component: {fileID: 1085388113}
   m_Layer: 0
   m_Name: Grass_Block_Bottom (11)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9581,6 +9629,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4447708731528404346, guid: 10fb95331a544054aa9ef088cc676718, type: 3}
   m_PrefabInstance: {fileID: 1150689537}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1190457610
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5266154006852369933, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.528194
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266154006852369933, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3794042
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266154006852369933, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0049861707
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266154006852369933, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266154006852369933, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266154006852369933, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266154006852369933, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266154006852369933, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266154006852369933, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266154006852369933, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337664252362729234, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d2034d4a109a96342aa12f52ff9e4208, type: 3}
 --- !u!1 &1198892370
 GameObject:
   m_ObjectHideFlags: 0
@@ -9593,7 +9698,7 @@ GameObject:
   - component: {fileID: 1198892373}
   - component: {fileID: 1198892372}
   m_Layer: 7
-  m_Name: Grassy_Top (23)
+  m_Name: Deathplane03
   m_TagString: Deathplane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10454,7 +10559,7 @@ GameObject:
   - component: {fileID: 1396586233}
   m_Layer: 0
   m_Name: Grass_Block_Top (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12565,7 +12670,7 @@ GameObject:
   - component: {fileID: 1869555177}
   - component: {fileID: 1869555176}
   m_Layer: 7
-  m_Name: Grassy_Top (25)
+  m_Name: Deathplane05
   m_TagString: Deathplane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13293,7 +13398,7 @@ GameObject:
   - component: {fileID: 1992937677}
   m_Layer: 0
   m_Name: Grass_Block_Top (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13855,7 +13960,7 @@ GameObject:
   - component: {fileID: 2139974616}
   m_Layer: 0
   m_Name: Grass_Block_Top (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13938,8 +14043,6 @@ SceneRoots:
   - {fileID: 662538098}
   - {fileID: 1923205990}
   - {fileID: 364811763}
-  - {fileID: 33046609}
-  - {fileID: 703126417}
   - {fileID: 827598347}
   - {fileID: 413291154}
   - {fileID: 713567798}
@@ -13951,3 +14054,4 @@ SceneRoots:
   - {fileID: 1629454799}
   - {fileID: 385777716}
   - {fileID: 1925873441}
+  - {fileID: 1190457610}
