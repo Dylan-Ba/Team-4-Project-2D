@@ -11,6 +11,7 @@ public class WolfController : MonoBehaviour
     public GameObject ghostPrefab;
     private Vector2 pos;
     public float speed;
+    public float maxSpeed;
     public Rigidbody2D rb;
     [SerializeField]
     private LayerMask playerMask;
@@ -27,9 +28,17 @@ public class WolfController : MonoBehaviour
     public GameObject biteAttack;
     public GameObject attackPoint;
     public float biteRange;
+
+    public float kbForce;
+    public float kbCounter;
+    public float kbTotalTime;
+    public bool knockFromRight;
+
+    public Animator Animator;
     // Start is called before the first frame update
     void Start()
     {
+        speed = maxSpeed;
         biteAttack.gameObject.SetActive(false);
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
@@ -48,20 +57,7 @@ public class WolfController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Invisible Wall"))
-        {
-            Debug.Log("Invisible Wall");
-            if (transform.localScale.x > 0)
-            {
-                speed = speed * -1;
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
-            else if (transform.localScale.x < 0)
-            {
-                speed = speed * -1;
-                transform.localScale = new Vector3(1, 1, 1);
-            }
-        }
+        
         if (other.gameObject == player)
         {
             gm.kbCounter = gm.kbTotalTime;
@@ -79,6 +75,9 @@ public class WolfController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        kbCounter = kbTotalTime;
+        Animator.SetBool("WasHit", true);
+        Invoke("EndHitAnim", 0.5f);
         currentHealth -= damage;
         Debug.Log("Enemy has " + currentHealth + " health.");
 
@@ -91,7 +90,7 @@ public class WolfController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (gm.kbCounter <= 0)
+        if (kbCounter <= 0)
         {
 
             if (patrolDestination == 0)
@@ -99,7 +98,7 @@ public class WolfController : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoint[0].position, speed * Time.deltaTime);
                 if (Vector2.Distance(transform.position, patrolPoint[0].position) < 0.2f)
                 {
-                    transform.localScale = new Vector3(1, 1, 1);
+                    transform.localScale = new Vector3(-1, 1, 1);
                     patrolDestination = 1;
                 }
             }
@@ -108,7 +107,7 @@ public class WolfController : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoint[1].position, speed * Time.deltaTime);
                 if (Vector2.Distance(transform.position, patrolPoint[1].position) < 0.2f)
                 {
-                    transform.localScale = new Vector3(-1, 1, 1);
+                    transform.localScale = new Vector3(1, 1, 1);
                     patrolDestination = 0;
                 }
             }
@@ -116,15 +115,15 @@ public class WolfController : MonoBehaviour
      
         else
         {
-            if (gm.knockFromRight == true)
+            if (knockFromRight == true)
             {
-                rb.velocity = new Vector2(gm.kbForce, 5);
+                rb.velocity = new Vector2(kbForce, 5);
             }
-            if (gm.knockFromRight == false)
+            if (knockFromRight == false)
             {
-                rb.velocity = new Vector2(-gm.kbForce, 5);
+                rb.velocity = new Vector2(kbForce, 5);
             }
-            gm.kbCounter -= Time.deltaTime;
+            kbCounter -= Time.deltaTime;
         }
         
     }
@@ -134,20 +133,28 @@ public class WolfController : MonoBehaviour
         playerDistance = Vector2.Distance(attackPoint.transform.position, player.transform.position);
         if (playerDistance <= 1f)
         {
-            biteAttack.gameObject.SetActive(true);
+            speed = 0;
+
+            StartBite();
 
             Invoke("StopBite", 0.3f);
         }
     }
     private void StartBite()
     {
+        Animator.SetBool("Attacking", true);
         biteAttack.gameObject.SetActive(true);
         Invoke("StopBite", 0.3f);
     }
     private void StopBite()
     {
+        speed = maxSpeed;
+        Animator.SetBool("Attacking", false);
         biteAttack.gameObject.SetActive(false);
-
+    }
+    private void EndHitAnim()
+    {
+        Animator.SetBool("WasHit", false);
     }
 
 
