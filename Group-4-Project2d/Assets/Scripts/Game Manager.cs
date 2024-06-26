@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     public int ghostKilled;
+
+
+    public bool keyCollected;
     private void Awake()
 
     {

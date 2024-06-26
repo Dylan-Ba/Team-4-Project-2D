@@ -231,6 +231,12 @@ public class PlayerController : MonoBehaviour
             gm.currentHealth--;
 
         }
+       if (other.gameObject.tag == "Key")
+        {
+            Debug.Log("I got a key");
+            other.gameObject.SetActive(false);
+            gm.keyCollected = true;
+        }
     }
     private void OnCollisionExit2D(Collision2D other)
     {

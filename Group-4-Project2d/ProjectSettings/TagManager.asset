@@ -11,6 +11,8 @@ TagManager:
   - Invisible Wall
   - Deathplane
   - Attack
+  - Door
+  - Key
   layers:
   - Default
   - TransparentFX
