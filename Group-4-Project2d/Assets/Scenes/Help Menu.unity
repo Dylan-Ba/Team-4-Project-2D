@@ -231,7 +231,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -945,7 +945,7 @@ GameObject:
   - component: {fileID: 483976145}
   - component: {fileID: 483976144}
   m_Layer: 5
-  m_Name: The kingdom is in danger! (2)
+  m_Name: Take courage
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1697,8 +1697,7 @@ GameObject:
   - component: {fileID: 1310640943}
   - component: {fileID: 1310640942}
   m_Layer: 5
-  m_Name: You have been asked by the king himself to fight them and kill all the
-    ghosts.
+  m_Name: Kill ghosts
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1936,6 +1935,7 @@ MonoBehaviour:
   kbTotalTime: 0
   knockFromRight: 0
   ghostKilled: 0
+  keyCollected: 0
 --- !u!4 &1473959219
 Transform:
   m_ObjectHideFlags: 0
@@ -2168,7 +2168,7 @@ GameObject:
   - component: {fileID: 1716672276}
   - component: {fileID: 1716672275}
   m_Layer: 5
-  m_Name: 'Evil spirits have possessed wolves in the forest nearby. '
+  m_Name: Evil spirits have overrun the forest nearby.
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2213,7 +2213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Evil spirits have overrun the forest nearby
+  m_text: Evil spirits have overrun the forest nearby.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
