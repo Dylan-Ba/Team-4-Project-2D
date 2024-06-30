@@ -15,6 +15,12 @@ public class GhostController : MonoBehaviour
     public GameManager gm;
     [SerializeField]
     private Rigidbody2D rb;
+
+    public float kbForce;
+    public float kbCounter;
+    public float kbTotalTime;
+    public bool knockFromRight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,21 +35,21 @@ public class GhostController : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
-        if (gm.kbCounter >= 0)
+        if (kbCounter >= 0)
         { 
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
         }
         else
         {
-            if (gm.knockFromRight == true)
+            if (knockFromRight == true)
             {
                 rb.velocity = new Vector2(gm.kbForce, 5);
             }
-            if (gm.knockFromRight == false)
+            if (knockFromRight == false)
             {
                 rb.velocity = new Vector2(-gm.kbForce, 5);
             }
-            gm.kbCounter -= Time.deltaTime;
+            kbCounter -= Time.deltaTime;
         }
     }
     private void FixedUpdate()
