@@ -237,6 +237,20 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             gm.keyCollected = true;
         }
+       if (other.gameObject.tag == "Spikes")
+        {
+
+            gm.kbCounter = gm.kbTotalTime;
+            if (other.transform.position.x >= transform.position.x)
+            {
+                gm.knockFromRight = true;
+            }
+            if (other.transform.position.x <= transform.position.x)
+            {
+                gm.knockFromRight = false;
+            }
+            gm.currentHealth--;
+        }
     }
     private void OnCollisionExit2D(Collision2D other)
     {
