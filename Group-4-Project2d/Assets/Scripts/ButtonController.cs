@@ -15,9 +15,6 @@ public class ButtonController : MonoBehaviour
     public Button quit;
     public Button main;
 
-
-
-
     //Button functionality
     public void PlayGame()
     {

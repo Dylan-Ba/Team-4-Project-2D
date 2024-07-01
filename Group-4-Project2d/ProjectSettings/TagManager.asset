@@ -26,7 +26,7 @@ TagManager:
   - Wolf
   - Ghost
   - Background
-  - 
+  - Particles
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Entities
     uniqueID: 3999513427
+    locked: 0
+  - name: Particles
+    uniqueID: 1353184193
     locked: 0
