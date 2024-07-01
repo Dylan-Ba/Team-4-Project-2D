@@ -5065,9 +5065,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 521783424}
+    - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 393054253}
     - target: {fileID: 894835866772969130, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: m_Name
       value: Ghost (1)
@@ -11545,9 +11549,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 521783424}
+    - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 393054253}
     - target: {fileID: 894835866772969130, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: m_Name
       value: Ghost

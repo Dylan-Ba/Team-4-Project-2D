@@ -63,6 +63,7 @@ public class GhostController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            AudioManager.Instance.GhostDie();
             gm.ghostKilled++;
             Destroy(gameObject);
         }

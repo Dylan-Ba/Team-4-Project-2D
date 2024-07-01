@@ -60,6 +60,7 @@ public class WolfController : MonoBehaviour
 
         if (other.gameObject == player)
         {
+            AudioManager.Instance.Hit();
             gm.kbCounter = gm.kbTotalTime;
             if (other.transform.position.x <= transform.position.x)
             {
@@ -87,7 +88,9 @@ public class WolfController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            AudioManager.Instance.WolfDie();
             ghostPrefab.gameObject.SetActive(true);
+            AudioManager.Instance.Ghost();
             Destroy(gameObject);
         }
     }

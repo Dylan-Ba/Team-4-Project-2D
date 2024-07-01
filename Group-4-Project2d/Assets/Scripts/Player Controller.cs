@@ -168,6 +168,8 @@ public class PlayerController : MonoBehaviour
     private void HandleMelee()
     {
         if (Input.GetKeyDown(KeyCode.E))
+
+            AudioManager.Instance.Swing();
         {
             if (grounded)
             {
@@ -240,13 +242,14 @@ public class PlayerController : MonoBehaviour
         }
        if (other.gameObject.tag == "Key")
         {
+            AudioManager.Instance.KeyPickup();
             Debug.Log("I got a key");
             other.gameObject.SetActive(false);
             gm.keyCollected = true;
         }
        if (other.gameObject.tag == "Spikes")
         {
-
+            AudioManager.Instance.Spikes();
             gm.kbCounter = gm.kbTotalTime;
             if (other.transform.position.x >= transform.position.x)
             {
@@ -279,6 +282,7 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleDeath()
     {
+        AudioManager.Instance.PlayerDie();
         Debug.Log("Death!!!");
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);

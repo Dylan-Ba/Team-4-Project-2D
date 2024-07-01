@@ -18,8 +18,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;  //Creates a singleton
 
     [SerializeField] private AudioSource audioSource, musicSource, ambientSource;   //Requires three Audio Sources in the scene - one for sound effects, music, and ambience.
-    [SerializeField] private AudioClip bark, birds, ghost, growl, hit, jump, wind;
-    
+    [SerializeField] private AudioClip bark, birds, ghost, growl, hit, jump, wind, doorOpen, keyPickup, playerDie, swing, spikes, unlock, wolfDie, ghostDie;
+
 
     [Header("Background Music")]  //Arrays that let us choose between multiple music clips if we want to have something different for the win and lose screens etc.
     [SerializeField] private AudioClip[] bgMusic;
@@ -94,6 +94,56 @@ public class AudioManager : MonoBehaviour
         audioSource.Play();
     }
 
+
+    public void DoorOpen()
+    {
+        audioSource.clip = doorOpen;
+        audioSource.Play();
+    }
+
+
+    public void KeyPickup()
+    {
+        audioSource.clip = keyPickup;
+        audioSource.Play();
+    }
+
+
+    public void PlayerDie()
+    {
+        audioSource.clip = playerDie;
+        audioSource.Play();
+    }
+
+    public void Swing()
+    {
+        audioSource.clip = swing;
+        audioSource.Play();
+    }
+
+    public void Spikes()
+    {
+        audioSource.clip = spikes;
+        audioSource.Play();
+    }
+
+    public void Unlock()
+    {
+        audioSource.clip = unlock;
+        audioSource.Play();
+    }
+
+    public void GhostDie()
+    {
+        audioSource.clip = ghostDie;
+        audioSource.Play();
+    }
+
+    public void WolfDie()
+    {
+        audioSource.clip = wolfDie;
+        audioSource.Play();
+    }
 
     //Ambient sounds
 
