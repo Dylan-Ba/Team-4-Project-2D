@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
         initialGravity = rb.gravityScale;
         gliding = false;
         playerHealth = 3;
+        gm.ghostKilled = 0;
 
     }
 
@@ -251,6 +252,10 @@ public class PlayerController : MonoBehaviour
             }
             gm.currentHealth--;
         }
+       if (other.gameObject.tag == "Transition")
+        {
+            HandleTransition();
+        }
     }
     private void OnCollisionExit2D(Collision2D other)
     {
@@ -273,5 +278,32 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(currentSceneName);
         gm.currentHealth = 3;
         gm.ghostKilled = 0;
+    }
+
+    private void HandleTransition()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == "Level One")
+        {
+            if (gm.ghostKilled < 2)
+            {
+                Debug.Log("There are still some ghosts in the area");
+            }
+            if (gm.ghostKilled >= 2)
+            {
+                gm.ChangeLevel();
+            }
+        }
+        if (currentScene == "Level Two")
+        {
+            if (gm.ghostKilled < 3)
+            {
+                Debug.Log("There are still some ghosts in the area");
+            }
+            if (gm.ghostKilled >= 3)
+            {
+                gm.ChangeLevel();
+            }
+        }
     }
 }
