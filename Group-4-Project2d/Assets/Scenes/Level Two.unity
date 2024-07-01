@@ -1455,7 +1455,7 @@ GameObject:
   - component: {fileID: 270621655}
   m_Layer: 0
   m_Name: SpikeGround (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6060,7 +6060,7 @@ GameObject:
   - component: {fileID: 947685544}
   m_Layer: 0
   m_Name: SpikeGround
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
