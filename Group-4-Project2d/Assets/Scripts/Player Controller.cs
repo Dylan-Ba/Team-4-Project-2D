@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     Vector2 move;
     Vector2 jump;
     public float runSpeed;
+    private float transitionSpeed;
     public float jumpSpeed;
     public float glideSpeed;
     public float glideFall;
@@ -44,6 +45,11 @@ public class PlayerController : MonoBehaviour
     public int playerHealth;
 
     public Animator Animator;
+
+    [SerializeField]
+    private GameObject transitionZone;
+    [SerializeField]
+    private Transform transitionPoint;
    
 
     // Start is called before the first frame update
@@ -56,7 +62,7 @@ public class PlayerController : MonoBehaviour
         gliding = false;
         playerHealth = 3;
         gm.ghostKilled = 0;
-
+        transitionSpeed = runSpeed;
     }
 
     // Update is called once per frame
@@ -291,7 +297,11 @@ public class PlayerController : MonoBehaviour
             }
             if (gm.ghostKilled >= 2)
             {
-                gm.ChangeLevel();
+                transitionZone.gameObject.SetActive(false);
+
+                rb.velocity = new Vector2(transform.position.x * runSpeed, rb.velocity.y);
+
+
             }
         }
         if (currentScene == "Level Two")
@@ -305,5 +315,9 @@ public class PlayerController : MonoBehaviour
                 gm.ChangeLevel();
             }
         }
+    }
+    private void ChangeLevel()
+    {
+        gm.ChangeLevel();
     }
 }

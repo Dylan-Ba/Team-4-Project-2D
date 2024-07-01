@@ -5092,7 +5092,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 634275533}
-  offset: 3
+  offsetH: 3
+  offsetV: 1
   offsetSmoothing: 2
 --- !u!81 &827598345
 AudioListener:
