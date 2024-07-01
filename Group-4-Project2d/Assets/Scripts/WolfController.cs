@@ -39,6 +39,7 @@ public class WolfController : MonoBehaviour
     void Start()
     {
         speed = maxSpeed;
+        Animator.SetFloat("WalkSpeed", speed);
         biteAttack.gameObject.SetActive(false);
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
@@ -60,7 +61,6 @@ public class WolfController : MonoBehaviour
 
         if (other.gameObject == player)
         {
-            AudioManager.Instance.Hit();
             gm.kbCounter = gm.kbTotalTime;
             if (other.transform.position.x <= transform.position.x)
             {
@@ -88,10 +88,7 @@ public class WolfController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            AudioManager.Instance.WolfDie();
-            ghostPrefab.gameObject.SetActive(true);
-            AudioManager.Instance.Ghost();
-            Destroy(gameObject);
+            Invoke("OnDeath", 0.5f);
         }
     }
 
@@ -128,7 +125,7 @@ public class WolfController : MonoBehaviour
             }
             if (knockFromRight == false)
             {
-                rb.velocity = new Vector2(kbForce, 5);
+                rb.velocity = new Vector2(-kbForce, 5);
             }
             kbCounter -= Time.deltaTime;
         }
@@ -163,6 +160,10 @@ public class WolfController : MonoBehaviour
     {
         Animator.SetBool("WasHit", false);
     }
-
+    private void OnDeath()
+    {
+        ghostPrefab.SetActive(true );
+        Destroy(gameObject);
+    }
 
 }
