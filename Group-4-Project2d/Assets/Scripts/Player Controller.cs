@@ -178,24 +178,28 @@ public class PlayerController : MonoBehaviour
                 Animator.SetBool("Is Attacking", true);
                 AudioManager.Instance.Swing();
 
-                Collider2D[] hitWolf = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, wolfMask);
-
-                foreach (Collider2D enemy in hitWolf)
-                {
-                    enemy.GetComponent<WolfController>().TakeDamage(attackDamage);
-                    AudioManager.Instance.Hit();  //Plays the "hit" sound
-                }
-
-                Collider2D[] hitGhost = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, ghostMask);
-
-                foreach (Collider2D enemy in hitGhost)
-                {
-                    enemy.GetComponent<GhostController>().TakeDamage(attackDamage);
-                    AudioManager.Instance.Hit();
-                }
-                Invoke("SetSwordFalse", 0.5f);
+                Invoke("HandleMeleeCollision", 0.25f);
             }
         }
+    }
+    private void HandleMeleeCollision()
+    {
+        Collider2D[] hitWolf = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, wolfMask);
+
+        foreach (Collider2D enemy in hitWolf)
+        {
+            enemy.GetComponent<WolfController>().TakeDamage(attackDamage);
+            AudioManager.Instance.Hit();  //Plays the "hit" sound
+        }
+
+        Collider2D[] hitGhost = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, ghostMask);
+
+        foreach (Collider2D enemy in hitGhost)
+        {
+            enemy.GetComponent<GhostController>().TakeDamage(attackDamage);
+            AudioManager.Instance.Hit();
+        }
+        Invoke("SetSwordFalse", 0.5f);
     }
     private void OnDrawGizmosSelected()
     {
