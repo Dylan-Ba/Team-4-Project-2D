@@ -151,13 +151,13 @@ MonoBehaviour:
   currentHealth: 0
   player: {fileID: 0}
   speed: 2.5
+  gm: {fileID: 0}
+  rb: {fileID: 0}
   kbForce: 5
   kbCounter: 0
   kbTotalTime: 0.25
   knockFromRight: 0
-  gm: {fileID: 0}
-  animator: {fileID: 2644327592244096822}
-  rb: {fileID: 0}
+  Animator: {fileID: 2644327592244096822}
 --- !u!95 &2644327592244096822
 Animator:
   serializedVersion: 5
@@ -217,9 +217,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -295453869
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 352553907, guid: d46dbcb11a53c344ab1b04f8cfe547d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

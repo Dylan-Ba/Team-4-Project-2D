@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GhostController : MonoBehaviour
@@ -21,6 +22,8 @@ public class GhostController : MonoBehaviour
     public float kbTotalTime;
     public bool knockFromRight;
 
+    public Animator Animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +37,18 @@ public class GhostController : MonoBehaviour
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
+        if (player.transform.position.x - transform.position.x > 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            knockFromRight = true;
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            knockFromRight = false;
+        }
 
-        if (kbCounter >= 0)
+        if (kbCounter <= 0)
         { 
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
         }
@@ -43,14 +56,15 @@ public class GhostController : MonoBehaviour
         {
             if (knockFromRight == true)
             {
-                rb.velocity = new Vector2(gm.kbForce, 5);
+                rb.velocity = new Vector2(-kbForce, 5);
             }
             if (knockFromRight == false)
             {
-                rb.velocity = new Vector2(-gm.kbForce, 5);
+                rb.velocity = new Vector2(kbForce, 5);
             }
             kbCounter -= Time.deltaTime;
         }
+        
     }
     private void FixedUpdate()
     {
@@ -58,14 +72,15 @@ public class GhostController : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        kbCounter = kbTotalTime;
         currentHealth -= damage;
+        Animator.SetBool("Was hit", true);
         Debug.Log("Enemy has " + currentHealth + " health.");
 
         if (currentHealth <= 0)
         {
             AudioManager.Instance.GhostDie();
-            gm.ghostKilled++;
-            Destroy(gameObject);
+            Invoke("HandleDeath", 0.5f);
         }
     }
     private void OnCollisionEnter2D(Collision2D other)
@@ -82,6 +97,14 @@ public class GhostController : MonoBehaviour
                 gm.knockFromRight = false;
             }
             gm.currentHealth--;
+
+            kbCounter = kbTotalTime;
+            
         }
+    }
+    private void HandleDeath()
+    {
+        gm.ghostKilled++;
+        Destroy(gameObject);
     }
 }
