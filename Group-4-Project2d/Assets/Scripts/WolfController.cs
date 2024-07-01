@@ -79,7 +79,14 @@ public class WolfController : MonoBehaviour
             {
                 gm.knockFromRight = false;
             }
-            gm.currentHealth--;
+            if (gm.kbCounter >= 0)
+            { 
+                gm.currentHealth--;
+            }
+            else
+            {
+                Debug.Log("I Frames Active");
+            }
         }
         if (other.gameObject.tag == "Deathplane")
         {
