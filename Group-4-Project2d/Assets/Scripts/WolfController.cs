@@ -54,6 +54,15 @@ public class WolfController : MonoBehaviour
         HandleBite();
 
         ghostPrefab.transform.position = new Vector2(transform.position.x, transform.position.y +1);
+
+        if (player.transform.position.x - transform.position.x > 0)
+        {
+            knockFromRight = false;
+        }
+        else 
+        {
+            knockFromRight = true;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

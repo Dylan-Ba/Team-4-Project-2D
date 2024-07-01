@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
         playerHealth = 3;
         gm.ghostKilled = 0;
         transitionSpeed = runSpeed;
+        
     }
 
     // Update is called once per frame
@@ -96,6 +97,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = initialGravity;
         }
+
+       
     }
 
     void GetInputs()
@@ -167,14 +170,13 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleMelee()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-
-            AudioManager.Instance.Swing();
+        if (Input.GetKeyDown(KeyCode.E))   
         {
             if (grounded)
             {
                 sword.gameObject.SetActive(true);
                 Animator.SetBool("Is Attacking", true);
+                AudioManager.Instance.Swing();
 
                 Collider2D[] hitWolf = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, wolfMask);
 

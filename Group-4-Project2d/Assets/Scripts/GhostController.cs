@@ -73,7 +73,7 @@ public class GhostController : MonoBehaviour
         if (other.gameObject == player)
         {
             gm.kbCounter = gm.kbTotalTime;
-            if(other.transform.position.x <= transform.position.x)
+            if (other.transform.position.x <= transform.position.x)
             {
                 gm.knockFromRight = true;
             }

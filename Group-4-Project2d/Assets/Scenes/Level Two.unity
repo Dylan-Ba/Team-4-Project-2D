@@ -493,6 +493,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 634275533}
+    - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 894835866772969130, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: m_Name
       value: Ghost
@@ -1844,9 +1848,17 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 634275533}
+    - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 894835866772969130, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: m_Name
       value: Ghost (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135723889743163560, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2233447918885697308, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2133,9 +2145,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
-  kbForce: 0
+  kbForce: 3
   kbCounter: 0
-  kbTotalTime: 0
+  kbTotalTime: 0.5
   knockFromRight: 0
   ghostKilled: 0
   keyCollected: 0
@@ -14237,6 +14249,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 413291153}
+    - target: {fileID: 4656888564196451842, guid: 1369888b11a11614d9f50892e23e4a93, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6572253782269217122, guid: 1369888b11a11614d9f50892e23e4a93, type: 3}
       propertyPath: m_Name
       value: Player
@@ -14750,6 +14766,10 @@ PrefabInstance:
     - target: {fileID: 5214282334502261501, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
       propertyPath: m_Name
       value: Wolf
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214282334502261501, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5514589025725238743, guid: bac5c5a18aa8a234ba5d097fb150cc41, type: 3}
       propertyPath: m_Color.a
@@ -18827,9 +18847,17 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 634275533}
+    - target: {fileID: 313925677703958309, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 894835866772969130, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: m_Name
       value: Ghost (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 894835866772969130, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2233447918885697308, guid: 3a9ede8c379f6d143934b18f414f9fc0, type: 3}
       propertyPath: m_LocalPosition.x
