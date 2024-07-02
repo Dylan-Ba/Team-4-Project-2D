@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
         playerHealth = 3;
         gm.ghostKilled = 0;
         transitionSpeed = runSpeed;
+        
     }
 
     // Update is called once per frame
@@ -96,6 +97,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = initialGravity;
         }
+
+       
     }
 
     void GetInputs()
@@ -167,31 +170,36 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleMelee()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))   
         {
             if (grounded)
             {
                 sword.gameObject.SetActive(true);
                 Animator.SetBool("Is Attacking", true);
+                AudioManager.Instance.Swing();
 
-                Collider2D[] hitWolf = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, wolfMask);
-
-                foreach (Collider2D enemy in hitWolf)
-                {
-                    enemy.GetComponent<WolfController>().TakeDamage(attackDamage);
-                    AudioManager.Instance.Hit();  //Plays the "hit" sound
-                }
-
-                Collider2D[] hitGhost = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, ghostMask);
-
-                foreach (Collider2D enemy in hitGhost)
-                {
-                    enemy.GetComponent<GhostController>().TakeDamage(attackDamage);
-                    AudioManager.Instance.Hit();
-                }
-                Invoke("SetSwordFalse", 0.5f);
+                Invoke("HandleMeleeCollision", 0.25f);
             }
         }
+    }
+    private void HandleMeleeCollision()
+    {
+        Collider2D[] hitWolf = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, wolfMask);
+
+        foreach (Collider2D enemy in hitWolf)
+        {
+            enemy.GetComponent<WolfController>().TakeDamage(attackDamage);
+            AudioManager.Instance.Hit();  //Plays the "hit" sound
+        }
+
+        Collider2D[] hitGhost = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, ghostMask);
+
+        foreach (Collider2D enemy in hitGhost)
+        {
+            enemy.GetComponent<GhostController>().TakeDamage(attackDamage);
+            AudioManager.Instance.Hit();
+        }
+        Invoke("SetSwordFalse", 0.5f);
     }
     private void OnDrawGizmosSelected()
     {
@@ -240,13 +248,14 @@ public class PlayerController : MonoBehaviour
         }
        if (other.gameObject.tag == "Key")
         {
+            AudioManager.Instance.KeyPickup();
             Debug.Log("I got a key");
             other.gameObject.SetActive(false);
             gm.keyCollected = true;
         }
        if (other.gameObject.tag == "Spikes")
         {
-
+            AudioManager.Instance.Spikes();
             gm.kbCounter = gm.kbTotalTime;
             if (other.transform.position.x >= transform.position.x)
             {
@@ -279,6 +288,7 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleDeath()
     {
+        AudioManager.Instance.PlayerDie();
         Debug.Log("Death!!!");
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);

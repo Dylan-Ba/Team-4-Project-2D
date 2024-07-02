@@ -249,6 +249,14 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: 6931b6c41ec03194ba5b4fccfa83a387, type: 3}
   jump: {fileID: 8300000, guid: bc51890ffc86c764a9c358e10843c12c, type: 3}
   wind: {fileID: 8300000, guid: 960fd86847de0b341bcc37ba165f14e4, type: 3}
+  doorOpen: {fileID: 8300000, guid: a677e87f2936d08459bf73b5990ebc5b, type: 3}
+  keyPickup: {fileID: 8300000, guid: d8d899f009ab5e149adb6a16c085ef8a, type: 3}
+  playerDie: {fileID: 8300000, guid: 885afa0df56afae43b17ca4b498108d3, type: 3}
+  swing: {fileID: 8300000, guid: 4f972b10e90d68c48b8d5456d3899af8, type: 3}
+  spikes: {fileID: 8300000, guid: 8e94ec01b8bdbff44bdd618bf527c5ba, type: 3}
+  unlock: {fileID: 8300000, guid: e00870e38feff794193141080717e937, type: 3}
+  wolfDie: {fileID: 8300000, guid: 1c535145747b4134abbd90ff7332be7a, type: 3}
+  ghostDie: {fileID: 8300000, guid: af6280783a3f7c8449f05c6e013caa8b, type: 3}
   bgMusic:
   - {fileID: 8300000, guid: 68eabd84fa3547447bcc2889cbf2c4f2, type: 3}
   ambientSounds:

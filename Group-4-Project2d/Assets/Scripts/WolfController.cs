@@ -39,6 +39,7 @@ public class WolfController : MonoBehaviour
     void Start()
     {
         speed = maxSpeed;
+        Animator.SetFloat("WalkSpeed", speed);
         biteAttack.gameObject.SetActive(false);
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
@@ -53,6 +54,15 @@ public class WolfController : MonoBehaviour
         HandleBite();
 
         ghostPrefab.transform.position = new Vector2(transform.position.x, transform.position.y +1);
+
+        if (player.transform.position.x - transform.position.x > 0)
+        {
+            knockFromRight = false;
+        }
+        else 
+        {
+            knockFromRight = true;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -69,7 +79,14 @@ public class WolfController : MonoBehaviour
             {
                 gm.knockFromRight = false;
             }
-            gm.currentHealth--;
+            if (gm.kbCounter >= 0)
+            { 
+                gm.currentHealth--;
+            }
+            else
+            {
+                Debug.Log("I Frames Active");
+            }
         }
         if (other.gameObject.tag == "Deathplane")
         {
@@ -87,8 +104,7 @@ public class WolfController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            ghostPrefab.gameObject.SetActive(true);
-            Destroy(gameObject);
+            Invoke("OnDeath", 0.5f);
         }
     }
 
@@ -125,7 +141,7 @@ public class WolfController : MonoBehaviour
             }
             if (knockFromRight == false)
             {
-                rb.velocity = new Vector2(kbForce, 5);
+                rb.velocity = new Vector2(-kbForce, 5);
             }
             kbCounter -= Time.deltaTime;
         }
@@ -160,6 +176,10 @@ public class WolfController : MonoBehaviour
     {
         Animator.SetBool("WasHit", false);
     }
-
+    private void OnDeath()
+    {
+        ghostPrefab.SetActive(true );
+        Destroy(gameObject);
+    }
 
 }
