@@ -44,7 +44,11 @@ public class UIController : MonoBehaviour
         Debug.Log("Help button was clicked");
         SceneManager.LoadScene("HELP Menu");
     }
-
+    public void OnCLickCreditsButton()
+    {
+        Debug.Log("Credits");
+        SceneManager.LoadScene("Credits");
+    }
     private void HandleHealthUi()
     {
         playerHealth = gm.currentHealth;
