@@ -306,8 +306,8 @@ public class PlayerController : MonoBehaviour
             }
             if (gm.ghostKilled >= 2)
             {
-                transitionZone.gameObject.SetActive(false);
 
+                gm.ChangeLevel();
                 rb.velocity = new Vector2(transform.position.x * runSpeed, rb.velocity.y);
 
 
